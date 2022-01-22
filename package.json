@@ -4,7 +4,6 @@
   "description": "Create a list of skills for your github readme",
   "main": "src/index.js",
   "scripts": {
-    "serve": "nodemon app.ts",
     "start_vercel": "vercel dev",
     "deploy" : "vercel deploy --prod",
     "start": "npx tsc -w",
