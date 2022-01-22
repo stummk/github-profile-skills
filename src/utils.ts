@@ -19,11 +19,11 @@ export enum LEVEL {
 
 export const LEVEL_ORDER = Object.values(LEVEL);
 
-export function toBoolean(queryParam): boolean {
+export function toBoolean(queryParam: any): boolean {
     return Boolean((queryParam || "").replace(/\s*(false|null|undefined|0)\s*/i, ""));
 }
 
-export function toNumber(queryParam, defaultValue: number): number {
+export function toNumber(queryParam: any, defaultValue: number): number {
     if (!queryParam) return defaultValue;
     const parsed = parseInt(queryParam);
     if (isNaN(parsed)) return defaultValue;

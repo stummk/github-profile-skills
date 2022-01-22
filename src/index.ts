@@ -1,20 +1,19 @@
-import express, { Request, Response, NextFunction } from 'express';
-import icons, { SimpleIcon } from 'simple-icons';
-import { Card } from './src/card';
-import { Skills } from './src/skills';
-import { COLORS } from './src/themes';
-import { DEFAULTS, LEVEL, LEVEL_ORDER, toBoolean, toNumber } from './src/utils';
-import fetch from 'node-fetch';
+import express, { Application, Request, Response } from "express";
+import icons, { SimpleIcon } from "simple-icons";
+import { Card } from "./card";
+import { Skills } from "./skills";
+import { COLORS } from "./themes";
+import { LEVEL, DEFAULTS, toNumber, toBoolean, LEVEL_ORDER } from "./utils";
 
-const app = express();
-const port = 3000;
+const app: Application = express();
 
-app.listen(port, () => {
-    console.log(`Application started. Running...`);
+app.set("port", process.env.PORT || 3000);
+
+app.listen(app.get("port"), () => {
+    console.log(`Server on http://localhost:${app.get("port")}/`);
 });
 
-
-app.get('/skill', async (request: Request, response: Response, next: NextFunction) => {
+app.get('/skill', async (request: Request, response: Response) => {
     let skillItems: Array<{ skill: SimpleIcon, level: LEVEL }> = [];
     const id = request.query['id'] ?? '';
     let level = request.query['level'] ?? LEVEL.UNKNOWN;
@@ -37,7 +36,7 @@ app.get('/skill', async (request: Request, response: Response, next: NextFunctio
     }
 
     if (skill) {
-        level = LEVEL_ORDER.some(lo => lo === level) ? level  : LEVEL.UNKNOWN;
+        level = LEVEL_ORDER.some(lo => lo === level) ? level : LEVEL.UNKNOWN;
         skillItems.push({ skill: skill, level: LEVEL[level.toString()] });
     }
 
@@ -52,5 +51,5 @@ app.get('/skill', async (request: Request, response: Response, next: NextFunctio
         }
     }
 
-    response.status(200).send(new Card(skillItems, theme, row, column, DEFAULTS.PANEL_SIZE, marginW, marginH, noBg, noFrame).render()); // generate skill or skill cards and return
+    response.status(200).send(new Card(skillItems, theme, row, column, DEFAULTS.PANEL_SIZE, marginW, marginH, noBg, noFrame).render());
 });

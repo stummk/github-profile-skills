@@ -2,9 +2,13 @@
   "name": "github-profile-skills",
   "version": "1.0.0",
   "description": "Create a list of skills for your github readme",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "serve": "nodemon app.ts"
+    "serve": "nodemon app.ts",
+    "start_vercel": "vercel dev",
+    "deploy" : "vercel deploy --prod",
+    "start": "npx tsc -w",
+    "dev": "npx nodemon"
   },
   "repository": {
     "type": "git",
@@ -26,11 +30,12 @@
     "@types/node": "^17.0.8",
     "nodemon": "^2.0.15",
     "ts-node": "^10.4.0",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.5"
   },
   "dependencies": {
     "express": "^4.17.2",
     "node-fetch": "^2.6.7",
-    "simple-icons": "^6.6.0"
+    "simple-icons": "^6.6.0",
+    "vercel": "^23.1.2"
   }
 }
