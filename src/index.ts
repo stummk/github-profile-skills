@@ -4,6 +4,7 @@ import { Card } from "./card";
 import { Skills } from "./skills";
 import { COLORS } from "./themes";
 import { LEVEL, DEFAULTS, toNumber, toBoolean, LEVEL_ORDER } from "./utils";
+import fetch from 'node-fetch';
 
 const app: Application = express();
 
