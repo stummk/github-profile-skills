@@ -52,5 +52,7 @@ app.get('/skill', async (request: Request, response: Response) => {
         }
     }
 
-    response.status(200).send(new Card(skillItems, theme, row, column, DEFAULTS.PANEL_SIZE, marginW, marginH, noBg, noFrame).render());
+    response.status(200)
+        .setHeader("Content-Type", "image/svg+xml")
+        .send(new Card(skillItems, theme, row, column, DEFAULTS.PANEL_SIZE, marginW, marginH, noBg, noFrame).render());
 });
