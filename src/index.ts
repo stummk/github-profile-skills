@@ -54,5 +54,6 @@ app.get('/skill', async (request: Request, response: Response) => {
 
     response.status(200)
         .setHeader("Content-Type", "image/svg+xml")
+        .setHeader("Cache-Control", "public, max-age=7200")
         .send(new Card(skillItems, theme, row, column, DEFAULTS.PANEL_SIZE, marginW, marginH, noBg, noFrame).render());
 });
