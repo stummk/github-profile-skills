@@ -1,6 +1,6 @@
 <p align="center">
   <h2 align="center">Github Profile Skills</h2>
-  <p align="center">Add your skills width skill level to your github readme</p>
+  <p align="center">Add your skills with skill level to your github readme</p>
 </p>
 <p align="center">
   <a href="https://github.com/stummk/github-profile-skills/issues">
